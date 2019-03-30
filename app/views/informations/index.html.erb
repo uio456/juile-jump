@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
-  <h1>Champion's Fatigue management</h1>
+
    <% if @information.errors.any? %>
     <ul>
       <% item.errors.full_messages.each do |mas| %>
@@ -7,6 +7,9 @@
       <% end %>
     </ul>
   <% end %>
+
+  <h2>Champion's Fatigue management</h2>
+  <br>
 
   <%= form_for @information, url: informations_path do |f| %>
     <div class="form-group">
