@@ -1,0 +1,6 @@
+<h1>Welcomes#index</h1>
+<%= form_for @information, url: informations_path do |f| %>
+ name: <%= f.text_field :name, placeholder: "What's on your mind?" %>
+
+  <%= f.submit %>
+<% end %>
