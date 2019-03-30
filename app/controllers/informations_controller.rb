@@ -1,6 +1,7 @@
 class InformationsController < ApplicationController
   def index
     @information = Information.new
+    @informations = Information.all
   end
 
   def create
@@ -9,7 +10,7 @@ class InformationsController < ApplicationController
     if @information.save
       flash[:notice] = "建立成功"
     else
-      flash[:alert] = @information.errors.fall_messages.to_sentence
+      flash[:alert] = @information.errors.full_messages.to_sentence
     end
     redirect_back(fallback_location: root_path)
   end
@@ -17,6 +18,6 @@ class InformationsController < ApplicationController
   private
 
   def params_information
-    params.require(:information).permit(:name)
+    params.require(:information).permit(:name, :training_date, :rest_heart_rate, :training_duration, :rpe)
   end
 end

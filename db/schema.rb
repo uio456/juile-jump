@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 2019_03_30_074007) do
   enable_extension "plpgsql"
 
   create_table "information", force: :cascade do |t|
-    t.string "name"
-    t.integer "rest_heat_rate"
-    t.decimal "training_duration"
-    t.decimal "training_date"
+    t.datetime "training_date"
     t.integer "athlete_id"
-    t.integer "athlete_record_id"
+    t.string "name", comment: "預備用填寫名字"
+    t.integer "rest_heart_rate"
+    t.decimal "training_duration"
+    t.decimal "rpe"
     t.text "memo"
+    t.integer "athlete_record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

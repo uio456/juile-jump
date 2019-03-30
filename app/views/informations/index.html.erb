@@ -1,6 +1,52 @@
-<h1>Champion's Fatigue management</h1>
-<%= form_for @information, url: informations_path do |f| %>
- name: <%= f.text_field :name, placeholder: "What's on your mind?" %>
+<div class="col-md-6 col-md-offset-3">
+  <h1>Champion's Fatigue management</h1>
+   <% if @information.errors.any? %>
+    <ul>
+      <% item.errors.full_messages.each do |mas| %>
+        <li><%= mas %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+  <%= form_for @information, url: informations_path do |f| %>
+    <div class="form-group">
+      <%#= f.collection_select :athlete, Athlete.all, :id, :name, {prompt: "你是誰" }, {class: 'form-control'} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :training_date, 'Training Date' %>
+      <%= f.date_field :training_date, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :rest_heart_rate, "Rest Heart Rate" %>
+      <%= f.text_field :rest_heart_rate, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :training_duration, placeholder: "What's on your mind?" %>
+      <%= f.text_field :training_duration, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :rpe, "Session RPE" %>
+      <%= f.text_area :rpe, class: 'form-control intro' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+
+<br>
+<br>
+  <% @informations.each do |information| %>
+    <div class="col-md-12">
+      <h3>Name：<%= information.name %></h3>
+      <p>Traning Date<%= information.training_date %></p>
+      <p>Rest Heart Rate： <%= information.rest_heart_rate %>  </p>
+      <p>Training Duration：<%= information.training_duration %></p>
+      <p>Session RPE<%= information.rpe %></p>
+      <hr>
+    </div>
+  <% end %>
