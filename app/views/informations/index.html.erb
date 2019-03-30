@@ -2,5 +2,5 @@
 <%= form_for @information, url: informations_path do |f| %>
  name: <%= f.text_field :name, placeholder: "What's on your mind?" %>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
