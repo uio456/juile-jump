@@ -40,13 +40,27 @@
 
 <br>
 <br>
-  <% @informations.each do |information| %>
-    <div class="col-md-12">
-      <h3>Name：<%= information.name %></h3>
-      <p>Traning Date<%= information.training_date %></p>
-      <p>Rest Heart Rate： <%= information.rest_heart_rate %>  </p>
-      <p>Training Duration：<%= information.training_duration %></p>
-      <p>Session RPE<%= information.rpe %></p>
-      <hr>
-    </div>
-  <% end %>
+<br>
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Training Date</th>
+            <th scope="col">Rest Heart Rate</th>
+            <th scope="col">Training Duration</th>
+            <th scope="col">Seesion RPE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @informations.each do |information| %>
+            <tr>
+              <th scope="row"><%= information.name %></th>
+              <td><%= information.training_date %></td>
+              <td><%= information.rest_heart_rate %></td>
+              <td><%= information.training_duration %></td>
+              <td><%= information.rpe %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
