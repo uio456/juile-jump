@@ -7,12 +7,17 @@ class InformationsController < ApplicationController
   def create
     @information = Information.new(params_information)
 
+
     if @information.save
-      flash[:notice] = "建立成功"
+      @information.get_fatigue(@information)
+      flash[:notice] = "成功建立"
+      redirect_to root_path
     else
+      @informations = Information.all
       flash[:alert] = @information.errors.full_messages.to_sentence
+      render :index
     end
-    redirect_back(fallback_location: root_path)
+      # request.referrer, alert: @information.errors.full_messages.to_sentence
   end
 
   private

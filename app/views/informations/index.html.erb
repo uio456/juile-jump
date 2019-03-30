@@ -1,12 +1,12 @@
 <div class="col-md-6 col-md-offset-3">
-
-   <% if @information.errors.any? %>
+<!-- 
+   <%# if @information.errors.any? %>
     <ul>
-      <% item.errors.full_messages.each do |mas| %>
-        <li><%= mas %></li>
-      <% end %>
+      <%# @information.errors.full_messages.each do |mas| %>
+        <li><%#= mas %></li>
+      <%# end %>
     </ul>
-  <% end %>
+  <%# end %> -->
 
   <h2>Champion's Fatigue management</h2>
   <br>
@@ -28,12 +28,12 @@
       <%= f.text_field :rest_heart_rate, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :training_duration, placeholder: "What's on your mind?" %>
+      <%= f.label :training_duration %>
       <%= f.text_field :training_duration, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.label :rpe, "Session RPE" %>
-      <%= f.text_area :rpe, class: 'form-control intro' %>
+      <%= f.text_area :rpe, placeholder: "1是輕鬆／10是很累", class: 'form-control intro' %>
     </div>
     <div class="form-group">
       <%= f.submit class: 'btn btn-primary' %>
@@ -52,6 +52,7 @@
             <th scope="col">Rest Heart Rate</th>
             <th scope="col">Training Duration</th>
             <th scope="col">Seesion RPE</th>
+            <th scope="col">Fatigue</th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +63,7 @@
               <td><%= information.rest_heart_rate %></td>
               <td><%= information.training_duration %></td>
               <td><%= information.rpe %></td>
-              
+              <td><%= information.fatigue %></td>
             </tr>
           <% end %>
         </tbody>
